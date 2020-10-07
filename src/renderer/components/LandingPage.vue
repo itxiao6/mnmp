@@ -38,10 +38,10 @@
     created() {
       command.runShell('ls -ahl /usr/local/bin/brew',(err, data, stderr)=>{
         if(data.indexOf('/usr/local/bin/brew')!==-1){
-          return true;
+          console.log('brew 已安装')
+        }else{
+          console.log('brew 未安装')
         }
-        return false;
-        console.log(data);
       })
     },
     methods: {
