@@ -1,5 +1,5 @@
 # Base Image
-FROM php:7.4-fpm-alpine3.12
+FROM php:7.4-fpm-alpine
 
 # Label Description
 LABEL maintainer="php-fpm <itxiao6@qq.com>" version="1.0" license="MIT"
@@ -8,20 +8,6 @@ LABEL maintainer="php-fpm <itxiao6@qq.com>" version="1.0" license="MIT"
 ARG timezone
 
 ENV TIMEZONE=${timezone:-"Asia/Shanghai"}
-
-# apt-get update and install Software
-RUN apk update && apk add -y \
-    build-essential \
-    libmagickcore-dev \
-    libmagickwand-dev \
-    imagemagick \
-    libfreetype6-dev \
-    libjpeg62-turbo-dev \
-    libmcrypt-dev \
-    libpng-dev \
-    wget \
-    librabbitmq-dev \
-    libzip-dev
 
 # install php ext
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
