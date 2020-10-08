@@ -9,7 +9,7 @@ export default {
      * @returns {string}
      */
     getWorkDir(){
-      return this.getHomeDirPath()+'/mamp';
+      return this.getHomeDirPath()+'/mnmp';
     },
     /**
      * 获取用户目录

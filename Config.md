@@ -2,11 +2,11 @@
 
 
 sudo docker run \
--v /Users/apple/mamp/nginx/conf.d:/etc/nginx/conf.d \
--v /Users/apple/mamp/site:/usr/share/nginx/html \
+-v /Users/apple/mnmp/nginx/conf.d:/etc/nginx/conf.d \
+-v /Users/apple/mnmp/site:/usr/share/nginx/html \
 -d \
 --name nginx \
---network mamp \
+--network mnmp \
 -p 80:80 \
 nginx:stable-alpine
 
@@ -15,10 +15,10 @@ nginx:stable-alpine
 # PHP-FPM 篇
 
 docker run \
--v /Users/apple/mamp/site:/usr/share/nginx/html \
+-v /Users/apple/mnmp/site:/usr/share/nginx/html \
 -d \
 --name php-fpm \
---network mamp \
+--network mnmp \
 php:7.4-fpm-alpine
 
 
@@ -28,6 +28,6 @@ php:7.4-fpm-alpine
 docker network ls
 
 # 172.10.0.0 ~ 172.10.255.254
-docker network create  --subnet=172.10.20.30/16 mamp
+docker network create  --subnet=172.10.20.30/16 mnmp
 
-docker network rm mamp
+docker network rm mnmp
