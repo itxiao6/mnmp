@@ -31,3 +31,12 @@ docker network ls
 docker network create  --subnet=172.10.20.30/16 mnmp
 
 docker network rm mnmp
+
+
+# 编译篇
+
+docker build . \
+-t mnmp_php_fpm \
+--build-arg https_proxy=http://192.168.100.11:7890 \
+--build-arg http_proxy=http://192.168.100.11:7890 \
+--build-arg all_proxy=socks5://192.168.100.11:7891
