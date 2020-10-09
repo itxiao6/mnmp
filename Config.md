@@ -19,7 +19,7 @@ docker run \
 -d \
 --name php-fpm \
 --network mnmp \
-php:7.4-fpm-alpine
+mnmp_php_fpm:latest
 
 
 
