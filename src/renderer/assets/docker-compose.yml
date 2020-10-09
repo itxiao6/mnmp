@@ -1,0 +1,26 @@
+version: '3'
+services:
+  php-fpm-74:
+    build: ./php/7.4
+    volumes:
+      - /Users/apple/mnmp/site:/usr/share/nginx/html
+    networks:
+      - mnmp
+  php-fpm-73:
+    build: ./php/7.3
+    volumes:
+      - /Users/apple/mnmp/site:/usr/share/nginx/html
+    networks:
+      - mnmp
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - /Users/apple/mnmp/nginx/conf.d:/etc/nginx/conf.d
+      - /Users/apple/mnmp/site:/usr/share/nginx/html
+    networks:
+      - mnmp
+networks:
+  mnmp:
+    driver: bridge
