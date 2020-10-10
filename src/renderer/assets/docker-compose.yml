@@ -17,7 +17,9 @@ services:
     ports:
       - "80:80"
     volumes:
-      - /Users/apple/mnmp/nginx/conf.d:/etc/nginx/conf.d
+      - /Users/apple/mnmp/nginx/vhost:/etc/nginx/conf.d
+      - /Users/apple/mnmp/nginx/php-fpm:/etc/nginx/php-fpm
+      - /Users/apple/mnmp/nginx/rewrite:/etc/nginx/rewrite
       - /Users/apple/mnmp/site:/usr/share/nginx/html
     networks:
       - mnmp
