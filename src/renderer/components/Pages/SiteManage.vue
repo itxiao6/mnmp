@@ -15,13 +15,32 @@
           width="150">
       </el-table-column>
       <el-table-column
-          prop="status"
-          label="状态"
+          fixed
+          prop="config"
+          label="配置文件"
           width="150">
       </el-table-column>
       <el-table-column
           prop="dir"
           label="目录"
+          width="150">
+      </el-table-column>
+      <el-table-column
+          prop="port"
+          label="端口"
+          width="150">
+      </el-table-column>
+      <el-table-column
+          prop="php"
+          label="PHP版本">
+      </el-table-column>
+      <el-table-column
+          prop="rewrite"
+          label="重写规则">
+      </el-table-column>
+      <el-table-column
+          prop="status"
+          label="状态"
           width="150">
       </el-table-column>
       <el-table-column
@@ -43,6 +62,7 @@
 </template>
 
 <script>
+import vhost from "../../vhost";
 export default {
   name: "SiteManage",
   methods: {
@@ -50,14 +70,12 @@ export default {
       console.log(row);
     }
   },
+  created() {
+    this.tableData = vhost.getLists();
+  },
   data() {
     return {
-      tableData: [{
-        name: 'www.baidu.com',
-        status: '正常',
-        dir:'/Users/apple/www.baidu.com',
-        remarks:"测试站点"
-      }]
+      tableData: []
     };
   }
 }

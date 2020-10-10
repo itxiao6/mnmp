@@ -9,7 +9,21 @@ export default {
      * @returns {string}
      */
     getWorkDir(){
-      return this.getHomeDirPath()+'/mnmp';
+      return `${this.getHomeDirPath()}/mnmp`;
+    },
+    /**
+     * 获取nginx 目录
+     * @returns {string}
+     */
+    getNginxDir(){
+        return `${this.getWorkDir()}/nginx`;
+    },
+    /**
+     * 获取Nginx 站点目录
+     * @returns {string}
+     */
+    getNginxVhostDir(){
+        return `${this.getNginxDir()}/vhost`;
     },
     /**
      * 获取用户目录
@@ -17,6 +31,13 @@ export default {
      */
     getHomeDirPath() {
         return os.homedir();
+    },
+    /**
+     * 获取占位符
+     * @returns {string}
+     */
+    getTabChar(){
+        return '    ';
     },
     /**
      * 读取文件
