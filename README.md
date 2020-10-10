@@ -1,22 +1,20 @@
 # mnmp
 
-> Mac Nginx Mysql PHP
+> Mac Nginx Mysql PHP Mac 使用Docker 完成的 Nginx + Mysql + PHP(多版本共存)的集成环境
+#### 介绍
+##### 本项目依赖于Docker 以及 docker-compose
+##### 本项目主要用于本地开发环境 的站点以及数据库的自动管理
 
 #### Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:9080
-npm run dev
-
-# build electron application for production
-npm run build
-
-
+###### 安装依赖
 ```
-
----
-
-This project was generated with [electron-vue](https://github.com/SimulatedGREG/electron-vue) using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
+npm install
+```
+###### 运行服务
+```
+npm run dev
+```
+###### 编译项目
+```
+npm run build
+```
