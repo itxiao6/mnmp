@@ -11,8 +11,6 @@ ENV TIMEZONE=${timezone:-"Asia/Shanghai"}
 
 # 修改镜像
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
-# 代理
-#RUN export https_proxy=http://192.168.100.11:7890 http_proxy=http://192.168.100.11:7890 all_proxy=socks5://192.168.100.11:7891
 
 # Install System Package
 RUN apk update

@@ -8,13 +8,17 @@
         background-color="#3c444d"
         text-color="#fff"
         active-text-color="#ffd04b">
-      <el-menu-item index="4" @click="jump_page('/')">
+      <el-menu-item index="1" @click="jump_page('/')">
         <i class="el-icon-setting"></i>
         <span slot="title">首页</span>
       </el-menu-item>
-      <el-menu-item index="5" @click="jump_page('/site-manage')">
+      <el-menu-item index="2" @click="jump_page('/site-manage')">
         <i class="el-icon-setting"></i>
         <span slot="title">站点管理</span>
+      </el-menu-item>
+      <el-menu-item index="3" @click="jump_page('/databses-manage')">
+        <i class="el-icon-setting"></i>
+        <span slot="title">数据库管理</span>
       </el-menu-item>
     </el-menu>
   </el-col>

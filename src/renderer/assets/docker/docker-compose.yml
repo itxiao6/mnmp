@@ -1,19 +1,22 @@
 version: '3'
 services:
+  # PHP 7.4
   php-fpm-74:
     build: ./php/7.4
     volumes:
       - ~/mnmp/site:/usr/share/nginx/html
     networks:
       - mnmp
+  # PHP 7.3
   php-fpm-73:
     build: ./php/7.3
     volumes:
       - ~/mnmp/site:/usr/share/nginx/html
     networks:
       - mnmp
+  # Nginx
   nginx:
-    image: nginx:stable-alpine
+    build: ./nginx/nginx-stable
     ports:
       - "80:80"
     volumes:
@@ -21,6 +24,25 @@ services:
       - ~/mnmp/nginx/php-fpm:/etc/nginx/php-fpm
       - ~/mnmp/nginx/rewrite:/etc/nginx/rewrite
       - ~/mnmp/site:/usr/share/nginx/html
+    networks:
+      - mnmp
+  # Mariadb
+  mariadb:
+    build: ./mariadb/10.4
+    ports:
+      - "3306:3306"
+    volumes:
+      - ~/mnmp/mariadb/conf:/etc/mysql/conf.d
+      - ~/mnmp/mariadb/data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - mnmp
+  # Redis
+  redis:
+    build: ./redis/6.0
+    ports:
+      - "6379:6379"
     networks:
       - mnmp
 networks:
