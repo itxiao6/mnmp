@@ -8,7 +8,7 @@
 #### Build Setup
 ###### 安装依赖
 ```
-npm install
+cnpm install -g @vue/cli && npm install
 ```
 ###### 运行服务
 ```
