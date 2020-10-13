@@ -6,15 +6,31 @@
 
 <script>
   import nginx from "../nginx";
+  import sqlite from "../sqlite";
+  import sqlite3 from 'sqlite3'
+  import { open } from 'sqlite'
 
   var child_process = require('child_process');
   export default {
     name: 'landing-page',
     created() {
+      open({
+        filename: '/Users/apple/Desktop/mnmp/src/renderer/database.db',
+        driver: sqlite3.Database
+      }).then((db) => {
+        console.log(db);
+        // do your thing
+      })
+      // let sqlite_action = new sqlite();
+      // sqlite_action.connection('CREATE TABLE ? (col TEXT)','tbl').then(res=>{
+      //   console.log(res);
+      // }).catch(error => {
+      //   console.log(res);
+      // });
+      // let res = sqlite_action.query('CREATE TABLE ? (col TEXT)','tbl');
 
-      let config = new nginx('/Users/apple/Desktop/mnmp/src/renderer/assets/nginx.conf');
-      let res = config.setSiteName('测试名称');
-      console.log(res);
+      // console.log(res);
+
       // const build = child_process.exec('open /Users/apple/Desktop/mnmp/src/renderer/assets/start.command');
       // console.log(build);
 
