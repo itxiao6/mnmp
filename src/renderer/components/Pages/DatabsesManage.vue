@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import vhost from "../../vhost";
+import vhost from "../../site";
 import MySql from "../../mysql";
 export default {
   name: "SiteManage",

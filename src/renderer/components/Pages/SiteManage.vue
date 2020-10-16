@@ -62,7 +62,8 @@
 </template>
 
 <script>
-import vhost from "../../vhost";
+import vhost from "../../site";
+import database from "../../database";
 export default {
   name: "SiteManage",
   methods: {
@@ -71,7 +72,28 @@ export default {
     }
   },
   created() {
-    this.tableData = vhost.getLists();
+    /**
+     * 获取数据库实例
+     */
+    let db = new database('/Users/itxiao6/mnmp-code/src/renderer/assets/database.json');
+    /**
+     * 查询数据库列表
+     */
+    db.table('site_lists').push({
+      name:"test",
+      config:"/User/shuh/test.conf",
+      dir:"/User/shuh",
+      port:[
+              80
+      ],
+      php:'php-74',
+      rewrite:'yii-rewrite-74.conf',
+      status:'正常',
+      remarks:'备注',
+    }).write();
+
+    this.tableData = db.table('site_lists').value();
+    // this.tableData = vhost.getLists();
   },
   data() {
     return {

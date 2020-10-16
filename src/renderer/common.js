@@ -1,3 +1,4 @@
+import database from "./database";
 const os = require('os')
 var fs = require('fs');
 /**
@@ -46,5 +47,12 @@ export default {
      */
     readFile(fileName) {
         return fs.readFileSync(fileName)
+    },
+    /**
+     * 获取本地数据库操作
+     * @returns {database}
+     */
+    getDB(){
+        return new database('/Users/itxiao6/mnmp-code/src/renderer/assets/database.json');
     }
 };

@@ -1,36 +1,377 @@
 {
-  "db_lists": [
+  "db_lists": [],
+  "site_lists": [
     {
-      "name": "ZombiEden ZE 1#",
-      "ip": "csgoze.cn:27050"
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
     },
     {
-      "name": "ZombiEden ZE 1#",
-      "ip": "csgoze.cn:27050"
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
     },
     {
-      "name": "ZombiEden ZE 1#",
-      "ip": "csgoze.cn:27050"
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
     },
     {
-      "name": "ZombiEden ZE 1#",
-      "ip": "csgoze.cn:27050"
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
     },
     {
-      "name": "ZombiEden ZE 1#",
-      "ip": "csgoze.cn:27050"
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
     },
     {
-      "name": "ZombiEden ZE 1#",
-      "ip": "csgoze.cn:27050"
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
     },
     {
-      "name": "ZombiEden ZE 1#",
-      "ip": "csgoze.cn:27050"
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
     },
     {
-      "name": "ZombiEden ZE 1#",
-      "ip": "csgoze.cn:27050"
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
+    },
+    {
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
+    },
+    {
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
+    },
+    {
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
+    },
+    {
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
+    },
+    {
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
+    },
+    {
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
+    },
+    {
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
+    },
+    {
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
+    },
+    {
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
+    },
+    {
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
+    },
+    {
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
+    },
+    {
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
+    },
+    {
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
+    },
+    {
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
+    },
+    {
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
+    },
+    {
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
+    },
+    {
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
+    },
+    {
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
+    },
+    {
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
+    },
+    {
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
+    },
+    {
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
+    },
+    {
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
+    },
+    {
+      "name": "test",
+      "config": "/User/shuh/test.conf",
+      "dir": "/User/shuh",
+      "port": [
+        80
+      ],
+      "php": "php-74",
+      "rewrite": "yii-rewrite-74.conf",
+      "status": "正常",
+      "remarks": "备注"
     }
   ]
 }
