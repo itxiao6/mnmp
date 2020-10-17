@@ -6,6 +6,22 @@ var fs = require('fs');
  */
 export default {
     /**
+     * docker 路径转换为主机目录
+     * @param path
+     * @returns {*}
+     */
+    dockerDirToHost(path){
+        return path;
+    },
+    /**
+     * 主机目录转换为docker 路径
+     * @param path
+     * @returns {*}
+     */
+    hostDirToDocker(path){
+        return path;
+    },
+    /**
      * 获取程序主目录
      * @returns {string}
      */
@@ -25,6 +41,20 @@ export default {
      */
     getNginxVhostDir(){
         return `${this.getNginxDir()}/vhost`;
+    },
+    /**
+     * 获取Nginx 重写规则目录
+     * @returns {string}
+     */
+    getNginxRewriteDir(){
+        return `${this.getNginxDir()}/rewrite`;
+    },
+    /**
+     * 获取站点目录
+     * @returns {string}
+     */
+    getSiteDir(){
+        return `${this.getWorkDir()}/site`;
     },
     /**
      * 获取用户目录
