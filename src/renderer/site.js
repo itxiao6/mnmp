@@ -39,12 +39,12 @@ export default{
         // 端口
         if(typeof port =='object'){
             port.forEach(item=>{
-                configContent += `${common.getTabChar()}listen ${item};`;
+                configContent += `${common.getTabChar()}listen ${item};\n`;
             })
         }else if(typeof port =='string' || typeof port=='bigint'){
-            configContent += `${common.getTabChar()}listen ${port};`;
+            configContent += `${common.getTabChar()}listen ${port};\n`;
         }else{
-            configContent += `${common.getTabChar()}listen 80;`;
+            configContent += `${common.getTabChar()}listen 80;\n`;
         }
         // 域名
         if(typeof host =='object'){
@@ -52,11 +52,11 @@ export default{
             host.forEach(item=>{
                 sever_name += `${item} `
             })
-            configContent += `${common.getTabChar()}server_name ${sever_name};`;
+            configContent += `${common.getTabChar()}server_name ${sever_name};\n`;
         }else if(typeof host =='string' || typeof host=='bigint'){
-            configContent += `${common.getTabChar()}server_name ${host};`;
+            configContent += `${common.getTabChar()}server_name ${host};\n`;
         }else{
-            configContent += `${common.getTabChar()}server_name localhost;`;
+            configContent += `${common.getTabChar()}server_name localhost;\n`;
         }
         // 默认文档
         if(typeof index =='object'){
@@ -64,23 +64,24 @@ export default{
             index.forEach(item=>{
                 default_document += `${item} `
             })
-            configContent += `${common.getTabChar()}index ${default_document};`;
+            configContent += `${common.getTabChar()}index ${default_document};\n`;
         }else if(typeof index =='string' || typeof index=='bigint'){
-            configContent += `${common.getTabChar()}index ${index};`;
+            configContent += `${common.getTabChar()}index ${index};\n`;
         }else{
-            configContent += `${common.getTabChar()}index localhost;`;
+            configContent += `${common.getTabChar()}index localhost;\n`;
         }
         // 站点目录
         let rootDir = `${common.getSiteDir()}/${name}`
         // 文档目录
-        configContent += `${common.getTabChar()}root ${rootDir};`;
-
+        configContent += `${common.getTabChar()}root ${common.hostDirToDocker(rootDir)};\n`;
         /**
          * 重写规则文件名
          */
         let rewriteFile = `${common.getNginxRewriteDir()}/${name}.conf`;
         // 重写规则
-        configContent += `include ${rewriteFile};`;
+        configContent += `include ${common.hostDirToDocker(rewriteFile)};\n`;
+
+        configContent += `location ~ ^/(\.user.ini|\.htaccess|\.git|\.svn|\.project|LICENSE|README.md) {\n\nreturn 404;\n}\n`
 
         configContent += `}`;
         /**

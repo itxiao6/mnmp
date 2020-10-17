@@ -11,6 +11,16 @@ export default {
      * @returns {*}
      */
     dockerDirToHost(path){
+        // 站点目录
+        path = path.replace('!^/usr/share/nginx/html!',`${this.getWorkDir()}/site`);
+        // 重写规则
+        path = path.replace('!^/etc/nginx/php-fpm!',`${this.getNginxDir()}/php-fpm`);
+        // 站点目录
+        path = path.replace('!^/etc/nginx/conf.d!',`${this.getNginxDir()}/vhost`);
+        // 数据库 配置目录
+        path = path.replace('!^/etc/mysql/conf.d!',`${this.getWorkDir()}/mariadb/conf`);
+        // 数据库数据目录
+        path = path.replace('!^/var/lib/mysql!',`${this.getWorkDir()}/mariadb/data`);
         return path;
     },
     /**
@@ -19,6 +29,16 @@ export default {
      * @returns {*}
      */
     hostDirToDocker(path){
+        // 站点目录
+        path = path.replace(`!^${this.getWorkDir()}/site!`,'/usr/share/nginx/html');
+        // 重写规则
+        path = path.replace(`!^${this.getNginxDir()}/php-fpm!`,'/etc/nginx/php-fpm');
+        // 站点目录
+        path = path.replace(`!^${this.getNginxDir()}/vhost!`,'/etc/nginx/conf.d');
+        // 数据库 配置目录
+        path = path.replace(`!^${this.getWorkDir()}/mariadb/conf!`,'/etc/mysql/conf.d');
+        // 数据库数据目录
+        path = path.replace(`!^${this.getWorkDir()}/mariadb/data!`,'/var/lib/mysql');
         return path;
     },
     /**
