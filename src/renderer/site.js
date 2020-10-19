@@ -72,6 +72,10 @@ export default{
         }
         // 站点目录
         let rootDir = `${common.getSiteDir()}/${name}`
+        // 目录检测
+        if(!fs.existsSync(rootDir)){
+            fs.mkdirSync(rootDir);
+        }
         // 文档目录
         configContent += `${common.getTabChar()}root ${common.hostDirToDocker(rootDir)};\n`;
         /**
@@ -80,12 +84,14 @@ export default{
         let rewriteFile = `${common.getNginxRewriteDir()}/${name}.conf`;
         // 重写规则
         configContent += `${common.getTabChar()}include ${common.hostDirToDocker(rewriteFile)};\n`;
-
+        // 安全过滤
         configContent += `${common.getTabChar()}location ~ ^/(\.user.ini|\.htaccess|\.git|\.svn|\.project|LICENSE|README.md) {\n${common.getTabChar()}${common.getTabChar()}return 404;\n${common.getTabChar()}}\n`
-
+        // 结束标识
         configContent += `}`;
-        console.log(configContent);
-        return ;
+        /**
+         * 写入Nginx 站点配置
+         */
+        fs.writeFileSync(configFile,configContent);
         /**
          * 写入数据库
          */

@@ -26,6 +26,16 @@ export default new Router({
       component: require('@/components/Pages/DatabsesManage').default
     },
     {
+      path: '/container-manage',
+      name: 'container-manage',
+      component: require('@/components/Pages/ContainerManage').default
+    },
+    {
+      path: '/images-manage',
+      name: 'images-manage',
+      component: require('@/components/Pages/ImagesManage').default
+    },
+    {
       path: '*',
       redirect: '/'
     }

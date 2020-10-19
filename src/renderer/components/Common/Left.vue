@@ -20,6 +20,14 @@
         <i class="el-icon-setting"></i>
         <span slot="title">数据库管理</span>
       </el-menu-item>
+      <el-menu-item index="4" @click="jump_page('/container-manage')">
+        <i class="el-icon-setting"></i>
+        <span slot="title">容器管理</span>
+      </el-menu-item>
+      <el-menu-item index="5" @click="jump_page('/images-manage')">
+        <i class="el-icon-setting"></i>
+        <span slot="title">镜像管理</span>
+      </el-menu-item>
     </el-menu>
   </el-col>
 </template>

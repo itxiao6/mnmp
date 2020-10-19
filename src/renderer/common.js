@@ -1,4 +1,5 @@
 import database from "./database";
+import common from "./common";
 const os = require('os')
 var fs = require('fs');
 /**
@@ -30,15 +31,17 @@ export default {
      */
     hostDirToDocker(path){
         // 站点目录
-        path = path.replace(`!${this.getWorkDir()}/site!`,'/usr/share/nginx/html');
+        path = path.replace(`${this.getWorkDir()}/site`,'/usr/share/nginx/html');
         // 重写规则
-        path = path.replace(`!${this.getNginxDir()}/php-fpm!`,'/etc/nginx/php-fpm');
+        path = path.replace(`${this.getNginxDir()}/php-fpm`,'/etc/nginx/php-fpm');
         // 站点目录
-        path = path.replace(`!${this.getNginxDir()}/vhost!`,'/etc/nginx/conf.d');
+        path = path.replace(`${this.getNginxDir()}/vhost`,'/etc/nginx/conf.d');
+        // 重写规则
+        path = path.replace(`${this.getNginxDir()}/rewrite`,'/etc/nginx/rewrite');
         // 数据库 配置目录
-        path = path.replace(`!${this.getWorkDir()}/mariadb/conf!`,'/etc/mysql/conf.d');
+        path = path.replace(`${this.getWorkDir()}/mariadb/conf`,'/etc/mysql/conf.d');
         // 数据库数据目录
-        path = path.replace(`!${this.getWorkDir()}/mariadb/data!`,'/var/lib/mysql');
+        path = path.replace(`${this.getWorkDir()}/mariadb/data`,'/var/lib/mysql');
         return path;
     },
     /**
@@ -103,6 +106,21 @@ export default {
      * @returns {database}
      */
     getDB(){
-        return new database('/Users/itxiao6/mnmp-code/src/renderer/assets/database.json');
-    }
+        return new database(common.getWorkDir()+'/database.json');
+    },
+    /**
+     * 转换时间戳
+     * @param UnixTime
+     * @returns {string}
+     */
+    timeToDateTime(UnixTime) {
+        let date = new Date(parseInt(UnixTime) * 1000);
+        let Y = date.getFullYear() + '-';
+        let M = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) + '-' : date.getMonth() + 1 + '-';
+        let D = date.getDate() < 10 ? '0' + date.getDate() + ' ' : date.getDate() + ' ';
+        let h = date.getHours() < 10 ? '0' + date.getHours() + ':' : date.getHours() + ':';
+        let m = date.getMinutes()  < 10 ? '0' + date.getMinutes() + ':' : date.getMinutes() + ':';
+        let s = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
+        return Y + M + D + h + m + s;
+    },
 };

@@ -64,6 +64,7 @@
 <script>
 import site from "../../site";
 import database from "../../database";
+import common from "../../common";
 export default {
   name: "SiteManage",
   methods: {
@@ -75,7 +76,7 @@ export default {
     /**
      * 获取数据库实例
      */
-    let db = new database('/Users/itxiao6/mnmp-code/src/renderer/assets/database.json');
+    // let db = new database('/Users/itxiao6/mnmp-code/src/renderer/assets/database.json');
 
     /**
      * 查询数据库列表
@@ -96,7 +97,8 @@ export default {
             'test.com'
     ],'/Users/itxiao6/mnmp/site/test.com',[80],'72','正常',['index.php'],'测试站点');
 
-    this.tableData = db.table('site_lists').value();
+    // this.tableData = db.table('site_lists').value();
+    this.tableData = common.getDB().table('site_lists').value();
     // this.tableData = vhost.getLists();
   },
   data() {

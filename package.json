@@ -58,6 +58,7 @@
     "lowdb": "^1.0.0",
     "mysql": "^2.18.1",
     "node-cmd": "^3.0.0",
+    "node-docker-api": "^1.1.22",
     "node-mysql": "^0.4.2",
     "vue": "^2.5.16",
     "vue-electron": "^1.0.6",

@@ -17,6 +17,7 @@ const FileSync = require('lowdb/adapters/FileSync')
       /**
        * 获取数据库实例
        */
+      return ;
       let db = new database('/Users/itxiao6/mnmp-code/src/renderer/assets/database.json');
 
       /**
