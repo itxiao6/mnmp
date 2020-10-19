@@ -79,11 +79,13 @@ export default{
          */
         let rewriteFile = `${common.getNginxRewriteDir()}/${name}.conf`;
         // 重写规则
-        configContent += `include ${common.hostDirToDocker(rewriteFile)};\n`;
+        configContent += `${common.getTabChar()}include ${common.hostDirToDocker(rewriteFile)};\n`;
 
-        configContent += `location ~ ^/(\.user.ini|\.htaccess|\.git|\.svn|\.project|LICENSE|README.md) {\n\nreturn 404;\n}\n`
+        configContent += `${common.getTabChar()}location ~ ^/(\.user.ini|\.htaccess|\.git|\.svn|\.project|LICENSE|README.md) {\n${common.getTabChar()}${common.getTabChar()}return 404;\n${common.getTabChar()}}\n`
 
         configContent += `}`;
+        console.log(configContent);
+        return ;
         /**
          * 写入数据库
          */
