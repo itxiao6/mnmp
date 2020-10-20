@@ -45,6 +45,27 @@ export default {
         return path;
     },
     /**
+     * 获取DockerCompose 命令
+     * @returns {string}
+     */
+    getDockerCompose(){
+        return '/usr/local/bin/docker-compose';
+    },
+    /**
+     * 获取DockerCompose 编排文件
+     * @returns {string}
+     */
+    getDockerComposeFile(){
+        return '/Users/apple/Desktop/mnmp/src/renderer/assets/docker/docker-compose.yml';
+    },
+    /**
+     * 获取DockerCompose基础命令
+     * @returns {string}
+     */
+    getDockerComposeBaseCommand(){
+        return `${common.getDockerCompose()} -f ${common.getDockerComposeFile()}`;
+    },
+    /**
      * 获取程序主目录
      * @returns {string}
      */

@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import docker from "../../docker";
+// import docker from "../../docker";
 import common from "../../common";
 
 export default {
@@ -69,26 +69,29 @@ export default {
     };
   },
   created() {
-    docker.getContainer().then(res=>{
-      let lists = [];
-      res.forEach(item=>{
-        lists.push({
-          Command:item.data.Command,
-          HostConfig:JSON.stringify(item.data.HostConfig),
-          Names:JSON.stringify(item.data.Names),
-          Status:item.data.Status,
-          Image:item.data.Image,
-          Mounts:JSON.stringify(item.data.Mounts),
-          State:item.data.State,
-          created_at:common.timeToDateTime(item.data.Created)
-        });
-        console.log(item.data)
-      })
-      this.tableData = lists;
-    })
+    // docker.getContainer().then(res=>{
+    //   let lists = [];
+    //   res.forEach(item=>{
+    //     lists.push({
+    //       Command:item.data.Command,
+    //       HostConfig:JSON.stringify(item.data.HostConfig),
+    //       Names:JSON.stringify(item.data.Names),
+    //       Status:item.data.Status,
+    //       Image:item.data.Image,
+    //       Mounts:JSON.stringify(item.data.Mounts),
+    //       State:item.data.State,
+    //       created_at:common.timeToDateTime(item.data.Created)
+    //     });
+    //     console.log(item.data)
+    //   })
+    //   this.tableData = lists;
+    // })
   },
   methods:{
-
+    handleClick(row){
+      console.log(row);
+      // row.
+    }
   }
 }
 </script>

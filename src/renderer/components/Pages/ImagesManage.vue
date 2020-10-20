@@ -4,78 +4,34 @@
       <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
       <el-breadcrumb-item>镜像管理</el-breadcrumb-item>
     </el-breadcrumb>
-    <el-table
-        :data="tableData"
-        border
-        style="width: 100%">
-      <el-table-column
-          fixed
-          prop="repository"
-          label="镜像"
-          width="150">
-      </el-table-column>
-      <el-table-column
-          prop="labels"
-          label="镜像标签"
-          width="150">
-      </el-table-column>
-      <el-table-column
-          prop="image_id"
-          label="镜像id"
-          width="150">
-      </el-table-column>
-      <el-table-column
-          prop="created_at"
-          label="创建时间"
-          width="150">
-      </el-table-column>
-      <el-table-column
-          prop="size"
-          label="大小">
-      </el-table-column>
-      <el-table-column
-          fixed="right"
-          label="操作"
-          width="100">
-        <template slot-scope="scope">
-          <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
-          <el-button type="text" size="small">编辑</el-button>
-        </template>
-      </el-table-column>
-    </el-table>
+    <el-button type="primary" @click="runImage">运行</el-button>
+    <section>
+      <div id="terminal"></div>
+    </section>
   </div>
 </template>
 
 <script>
-import docker from "../../docker";
-import common from "../../common";
-
+import command from "../../command";
+import { Terminal } from 'xterm';
 export default {
   name: "ImagesManage",
   data() {
     return {
-      tableData: [],
+      tableData: []
     }
   },
-  created() {
-    docker.getImages().then(res => {
-      let images_lists = [];
-      res.forEach(item => {
-        images_lists[images_lists.length] = {
-          repository: item.data.RepoTags,
-          image_id: item.data.Id,
-          labels: JSON.stringify(item.data.Labels),
-          size: ((item.data.Size/1024)/1024).toFixed(2) + "M",
-          created_at: common.timeToDateTime(item.data.Created)
-        }
-        console.log(item.data);
-      })
-      this.tableData = images_lists;
-    });
-  },
   methods: {
-    handleClick(row) {
-      console.log(row)
+    runImage() {
+      command.logs((type, data) => {
+        var term = new Terminal();
+        term.open(document.getElementById('terminal'));
+        data = data.replace(/\n/g, "\r\n")
+        term.write(data)
+        console.log(`${type}:${data}`);
+      }, (code) => {
+        console.log(`退出状态码:${code}`)
+      }, 'nginx');
     }
   }
 }
@@ -92,5 +48,9 @@ export default {
   background: white;
   margin: 22px 0;
   line-height: 48px;
+}
+.box {
+  width: 100%;
+  height: 100%;
 }
 </style>

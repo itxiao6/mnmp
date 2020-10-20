@@ -18,6 +18,9 @@ import Left from "./components/Common/Left";
 </script>
 
 <style>
+.xterm-viewport{
+  display: none !important;
+}
 body,html,ul,li,div{
   margin: 0;
   padding: 0;
