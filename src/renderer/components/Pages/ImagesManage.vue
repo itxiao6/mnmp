@@ -23,15 +23,19 @@ export default {
   },
   methods: {
     runImage() {
-      command.logs((type, data) => {
-        var term = new Terminal();
-        term.open(document.getElementById('terminal'));
-        data = data.replace(/\n/g, "\r\n")
-        term.write(data)
-        console.log(`${type}:${data}`);
-      }, (code) => {
-        console.log(`退出状态码:${code}`)
-      }, 'nginx');
+      // command.logs((type, data) => {
+      //   var term = new Terminal();
+      //   term.open(document.getElementById('terminal'));
+      //   data = data.replace(/\n/g, "\r\n")
+      //   term.write(data)
+      //   console.log(`${type}:${data}`);
+      // }, (code) => {
+      //   console.log(`退出状态码:${code}`)
+      // }, );
+      command.getContainerStatus('nginx').then(status=>{
+        console.log(status);
+      });
+
     }
   }
 }

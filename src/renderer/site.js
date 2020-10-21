@@ -1,5 +1,6 @@
 
 import common from "./common";
+import command from "./command";
 const fs = require('fs');
 /**
  * 站点管理
@@ -78,10 +79,16 @@ export default{
         }
         // 文档目录
         configContent += `${common.getTabChar()}root ${common.hostDirToDocker(rootDir)};\n`;
+        // PHP-FPM
+        if(php !== 'static'){
+            configContent += `${common.getTabChar()}include php-fpm/${php}.conf;\n`;
+        }
         /**
          * 重写规则文件名
          */
         let rewriteFile = `${common.getNginxRewriteDir()}/${name}.conf`;
+        // 重写规则
+        fs.writeFileSync(rewriteFile,'');
         // 重写规则
         configContent += `${common.getTabChar()}include ${common.hostDirToDocker(rewriteFile)};\n`;
         // 安全过滤
@@ -110,5 +117,12 @@ export default{
         /**
          * 重启Nginx
          */
+        command.restart((type,data)=>{
+            console.log(data);
+        },(code)=>{
+            if(code!==0){
+                console.log('添加站点失败')
+            }
+        },'nginx')
     },
 }

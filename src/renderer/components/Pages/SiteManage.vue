@@ -4,6 +4,62 @@
       <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
       <el-breadcrumb-item>站点管理</el-breadcrumb-item>
     </el-breadcrumb>
+    <el-dialog v-bind:title="siteFormTitle" :visible.sync="siteFormShow">
+      <el-form :model="siteForm">
+        <el-form-item label="活动名称" :label-width="formLabelWidth">
+          <el-input v-model="siteForm.name" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="PHP版本" :label-width="formLabelWidth">
+          <el-select v-model="siteForm.php" placeholder="请选择站点的PHP版本">
+            <el-option label="PHP73" value="php-fpm-73"></el-option>
+            <el-option label="PHP74" value="php-fpm-74"></el-option>
+            <el-option label="纯静态" value="static"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="域名" :label-width="formLabelWidth">
+          <el-select
+              v-model="siteForm.domain"
+              multiple
+              filterable
+              allow-create
+              default-first-option
+              placeholder="请填写域名">
+          </el-select>
+        </el-form-item>
+        <el-form-item label="端口" :label-width="formLabelWidth">
+          <el-select
+              v-model="siteForm.port"
+              multiple
+              filterable
+              allow-create
+              default-first-option
+              placeholder="请填写端口">
+          </el-select>
+        </el-form-item>
+        <el-form-item label="默认文档" :label-width="formLabelWidth">
+          <el-select
+              v-model="siteForm.index"
+              multiple
+              filterable
+              allow-create
+              default-first-option
+              placeholder="请填写默认文档">
+          </el-select>
+        </el-form-item>
+        <el-form-item label="站点目录名称" :label-width="formLabelWidth">
+          <el-input v-model="siteForm.root" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="站点描述" :label-width="formLabelWidth">
+          <el-input v-model="siteForm.remarks" autocomplete="off"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="hideForm()">取 消</el-button>
+        <el-button type="primary" @click="createSite()">确 定</el-button>
+      </div>
+    </el-dialog>
+
+    <el-button type="primary" @click="showForm('创建站点')">创建</el-button>
     <el-table
         :data="tableData"
         border
@@ -63,48 +119,79 @@
 
 <script>
 import site from "../../site";
-import database from "../../database";
 import common from "../../common";
+
 export default {
   name: "SiteManage",
+  data() {
+    return {
+      tableData: [],
+      siteForm: {},
+      siteFormShow: false, // 是否展示表单
+      siteFormTitle: "", // 是否展示表单
+      formLabelWidth: '120px', // 标签宽度
+    }
+  },
   methods: {
     handleClick(row) {
       console.log(row);
+    },
+    /**
+     * 展示表单
+     * @param title
+     */
+    showForm(title) {
+      if (title === '创建站点') {
+        this.siteForm = {
+          name: "",
+          php: "",
+          domain: [],
+          root: '',
+          port: [80],
+          index: ['index.html', 'index.htm', 'index.php'],
+          remarks: ''
+        }
+      }
+      this.siteFormShow = true;
+      this.siteFormTitle = title
+    },
+    /**
+     * 隐藏表单
+     */
+    hideForm() {
+      this.siteFormShow = false;
+      this.siteFormTitle = ''
+    },
+    /**
+     * 创建站点
+     */
+    createSite() {
+      console.log(this.siteForm);
+      /**
+       * 创建站点
+       */
+      site.createSite(
+          this.siteForm.name,
+          this.siteForm.domain,
+          this.siteForm.root,
+          this.siteForm.port,
+          this.siteForm.php,
+          '正常',
+          this.siteForm.index,
+          this.siteForm.remarks
+      );
+      this.$notify({
+        title: '成功',
+        message: '创建成功',
+        type: 'success'
+      });
     }
   },
   created() {
-    /**
-     * 获取数据库实例
-     */
-    // let db = new database('/Users/itxiao6/mnmp-code/src/renderer/assets/database.json');
-
-    /**
-     * 查询数据库列表
-     */
-    // db.table('site_lists').push({
-    //   name:"test",
-    //   config:"/User/shuh/test.conf",
-    //   dir:"/User/shuh",
-    //   port:[
-    //           80
-    //   ],
-    //   php:'php-74',
-    //   rewrite:'yii-rewrite-74.conf',
-    //   status:'正常',
-    //   remarks:'备注',
-    // }).write();
-    site.createSite('test.com',[
-            'test.com'
-    ],'/Users/itxiao6/mnmp/site/test.com',[80],'72','正常',['index.php'],'测试站点');
-
-    // this.tableData = db.table('site_lists').value();
+    // site.createSite('test.com',[
+    //         'test.com'
+    // ],'/Users/itxiao6/mnmp/site/test.com',[80],'72','正常',['index.php'],'测试站点');
     this.tableData = common.getDB().table('site_lists').value();
-    // this.tableData = vhost.getLists();
-  },
-  data() {
-    return {
-      tableData: []
-    };
   }
 }
 </script>
