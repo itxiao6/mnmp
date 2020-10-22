@@ -24,8 +24,8 @@ services:
       - ~/mnmp/nginx/php-fpm:/etc/nginx/php-fpm
       - ~/mnmp/nginx/rewrite:/etc/nginx/rewrite
       - ~/mnmp/site:/usr/share/nginx/html
-      - ~/mnmp/nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ~/mnmp/nginx/fastcgi.conf:/etc/nginx/fastcgi.conf
+      - ~/mnmp/config/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ~/mnmp/config/nginx/fastcgi.conf:/etc/nginx/fastcgi.conf
     networks:
       - mnmp
   # Mariadb

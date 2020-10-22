@@ -6,18 +6,9 @@
     </el-breadcrumb>
     <el-dialog v-bind:title="siteFormTitle" :visible.sync="siteFormShow">
       <el-form :model="siteForm">
-        <el-form-item label="活动名称" :label-width="formLabelWidth">
-          <el-input v-model="siteForm.name" autocomplete="off"></el-input>
-        </el-form-item>
-        <el-form-item label="PHP版本" :label-width="formLabelWidth">
-          <el-select v-model="siteForm.php" placeholder="请选择站点的PHP版本">
-            <el-option label="PHP73" value="php-fpm-73"></el-option>
-            <el-option label="PHP74" value="php-fpm-74"></el-option>
-            <el-option label="纯静态" value="static"></el-option>
-          </el-select>
-        </el-form-item>
         <el-form-item label="域名" :label-width="formLabelWidth">
           <el-select
+              @change="changeSiteDomain()"
               v-model="siteForm.domain"
               multiple
               filterable
@@ -25,6 +16,12 @@
               default-first-option
               placeholder="请填写域名">
           </el-select>
+        </el-form-item>
+        <el-form-item label="网站名称" :label-width="formLabelWidth">
+          <el-input v-model="siteForm.name" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="站点目录名称" :label-width="formLabelWidth">
+          <el-input v-model="siteForm.root" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="端口" :label-width="formLabelWidth">
           <el-select
@@ -46,8 +43,12 @@
               placeholder="请填写默认文档">
           </el-select>
         </el-form-item>
-        <el-form-item label="站点目录名称" :label-width="formLabelWidth">
-          <el-input v-model="siteForm.root" autocomplete="off"></el-input>
+        <el-form-item label="PHP版本" :label-width="formLabelWidth">
+          <el-select v-model="siteForm.php" placeholder="请选择站点的PHP版本">
+            <el-option label="PHP73" value="php-fpm-73"></el-option>
+            <el-option label="PHP74" value="php-fpm-74"></el-option>
+            <el-option label="纯静态" value="static"></el-option>
+          </el-select>
         </el-form-item>
         <el-form-item label="站点描述" :label-width="formLabelWidth">
           <el-input v-model="siteForm.remarks" autocomplete="off"></el-input>
@@ -135,6 +136,13 @@ export default {
   methods: {
     handleClick(row) {
       console.log(row);
+    },
+    /**
+     * 站点域名变化
+     */
+    changeSiteDomain(){
+      this.siteForm.name = this.siteForm.domain[0];
+      this.siteForm.root = this.siteForm.domain[0];
     },
     /**
      * 展示表单

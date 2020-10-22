@@ -99,15 +99,17 @@ export default {
   created() {
     this.updateSystemInfoInfo();
     this.updateServiceLists();
-    setInterval(this.updateSystemInfoInfo, 1000);
-    setInterval(this.updateServiceLists, 1000);
+    setInterval(this.updateSystemInfoInfo, 3000);
+    setInterval(this.updateServiceLists, 3000);
   },
   methods: {
     /**
      * 启动服务
      */
     startService(service) {
+      let str = '';
       command.up((type, data) => {
+        str = `${str}${data}`
         // console.log(data);
       }, (code) => {
         if (code !== 0) {
@@ -116,6 +118,7 @@ export default {
             message: '启动失败',
             type: 'warning'
           });
+          console.log(str);
           return
         }
         this.$notify({
